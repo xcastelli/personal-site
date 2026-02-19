@@ -16,101 +16,61 @@
 
     body {
       font-family: 'Inter', sans-serif;
+      color: white;
       overflow-x: hidden;
-      color: #111;
     }
 
     .hero {
+      position: relative;
+      height: 100vh;
       display: flex;
-      min-height: 100vh;
-    }
-
-    .hero-image {
-      flex: 1;
-      background: url('photo.jpg') center/cover no-repeat;
-    }
-
-    .hero-text {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      padding: 80px;
-      background: #ffffff;
+      text-align: center;
+      background: url('hero.jpg') center/cover no-repeat;
     }
 
-    .hero-text h1 {
-      font-size: 70px;
-      font-weight: 900;
-      line-height: 1;
-      animation: fadeUp 1s ease forwards;
-      opacity: 0;
-      transform: translateY(40px);
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
     }
 
-    .hero-text p {
-      margin-top: 25px;
-      font-size: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #666;
+    .hero-content {
+      position: relative;
+      z-index: 2;
       animation: fadeUp 1.2s ease forwards;
       opacity: 0;
       transform: translateY(40px);
     }
 
-    section {
-      padding: 120px 20px;
+    .hero h1 {
+      font-size: 90px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
     }
 
-    .section-dark {
-      background: #111;
-      color: white;
-    }
-
-    .section-light {
-      background: #f4f4f4;
-      color: #111;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      font-size: 40px;
-      margin-bottom: 30px;
-    }
-
-    .divider {
-      width: 60px;
-      height: 4px;
-      background: currentColor;
-      margin-bottom: 40px;
-    }
-
-    .fade-section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-
-    .fade-section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .subtitle {
+      margin-top: 25px;
+      font-size: 16px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 300;
     }
 
     footer {
       background: #ffffff;
-      padding: 160px 20px 80px;
       text-align: center;
+      padding: 180px 20px 100px;
     }
 
     .last-name {
-      font-size: 180px;
+      font-size: 220px;
       font-weight: 900;
-      letter-spacing: -5px;
+      letter-spacing: -6px;
+      color: #111;
       line-height: 1;
     }
 
@@ -122,20 +82,12 @@
     }
 
     @media(max-width: 900px) {
-      .hero {
-        flex-direction: column;
-      }
-
-      .hero-text {
-        padding: 40px;
-      }
-
-      .hero-text h1 {
-        font-size: 50px;
+      .hero h1 {
+        font-size: 55px;
       }
 
       .last-name {
-        font-size: 80px;
+        font-size: 90px;
       }
     }
   </style>
@@ -144,55 +96,17 @@
 <body>
 
   <section class="hero">
-    <div class="hero-image"></div>
-    <div class="hero-text">
+    <div class="hero-content">
       <h1>Arthur Bartholomew</h1>
-      <p>Entrepreneur | Commercial Cleaning Operator | Systems Builder</p>
-    </div>
-  </section>
-
-  <section class="section-light fade-section">
-    <div class="container">
-      <div class="divider"></div>
-      <h2>About</h2>
-      <p>
-        I am a commercial cleaning business owner focused on integrity, accountability, and reliability.
-        I build service businesses through disciplined systems, operational excellence, and long-term standards.
-        My work is centered around professionalism, structure, and consistent execution.
-      </p>
-    </div>
-  </section>
-
-  <section class="section-dark fade-section">
-    <div class="container">
-      <div class="divider"></div>
-      <h2>Core Values</h2>
-      <p>Integrity. Accountability. Reliability.</p>
+      <div class="subtitle">
+        Entrepreneur | Commercial Cleaning Operator | Systems Builder
+      </div>
     </div>
   </section>
 
   <footer>
     <div class="last-name">BARTHOLOMEW</div>
   </footer>
-
-  <script>
-    const sections = document.querySelectorAll('.fade-section');
-
-    const reveal = () => {
-      const triggerBottom = window.innerHeight * 0.85;
-
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-
-        if(sectionTop < triggerBottom) {
-          section.classList.add('visible');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', reveal);
-    reveal();
-  </script>
 
 </body>
 </html>
